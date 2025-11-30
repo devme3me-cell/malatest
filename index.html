@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>馬來迎富每日儲值抽獎</title>
+  <meta http-equiv="refresh" content="0;url=/app" />
+  <style>
+    body {
+      background-color: #8B0000;
+      color: #EACB79;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    .loading {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(234, 203, 121, 0.3);
+      border-radius: 50%;
+      border-top-color: #EACB79;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>馬來迎富每日儲值抽獎</h1>
+    <p>載入中，請稍候...</p>
+    <div class="loading"></div>
+  </div>
+</body>
+</html>

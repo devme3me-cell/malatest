@@ -1,0 +1,29 @@
+📌 CROWN IMAGE PLACEHOLDER
+================================
+
+Currently showing: Crown emoji (👑)
+
+To replace with your own crown image:
+
+1. Add your crown image to this folder (public/)
+   - Recommended name: crown.png or crown.gif
+   - Recommended size: 40x40 pixels or larger
+   - Use PNG with transparent background for best results
+
+2. Edit the code in: src/app/page.tsx
+   - Find line ~256: <span className="text-4xl crown-icon">👑</span>
+   - Replace with:
+     <img src="/crown.png" alt="Crown" className="w-10 h-10 crown-icon" />
+
+3. Save and the app will use your image!
+
+--------------------------------
+Need a crown image?
+- Flaticon: https://www.flaticon.com/search?word=crown
+- Icons8: https://icons8.com/icons/set/crown
+- PNG images: https://www.pngwing.com/en/search?q=crown
+- Freepik: https://www.freepik.com/search?query=crown
+
+--------------------------------
+Alternative: Keep the emoji
+The crown emoji works great! You don't have to replace it.
