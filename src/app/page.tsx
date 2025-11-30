@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
-import { Upload, Clock, Trophy, ChevronRight, ChevronLeft, X, Star, ChevronDown } from 'lucide-react';
+import { Upload, Clock, Trophy, ChevronRight, ChevronLeft, X, Star, ChevronDown, Facebook, Instagram, Youtube, Twitch, MessageCircle } from 'lucide-react';
 import SlotMachine from '@/components/SlotMachine';
 import { saveEntry, getEntries, getTodayEntries, uploadImage, type Entry } from '@/lib/supabase';
 
@@ -267,6 +267,14 @@ export default function Home() {
     <main className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         <div className="text-center mb-8">
+          <img
+            src="/logo.png"
+            alt="馬來迎富"
+            className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 object-contain drop-shadow-2xl"
+            style={{
+              filter: 'drop-shadow(0 0 30px rgba(234, 203, 121, 0.6))'
+            }}
+          />
           <h1 className="text-5xl md:text-6xl font-bold text-[#EACB79] mb-4">
             馬來迎富
           </h1>
@@ -602,6 +610,70 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Social Media Footer */}
+        <footer className="mt-12 pt-8 border-t-2 border-[#EACB79]/30">
+          <div className="text-center mb-4">
+            <p className="text-[#EACB79] font-semibold text-lg mb-2">關注我們</p>
+            <p className="text-[#EACB79]/70 text-sm">Follow us on social media</p>
+          </div>
+
+          <div className="flex justify-center items-center gap-4 flex-wrap">
+            <a
+              href="https://www.facebook.com/p/%E9%A6%AC%E4%BE%86%E8%BF%8E%E5%AF%8C%E5%88%86%E6%9E%90%E5%9C%98%E9%9A%8A-100063998113787/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-6 h-6" />
+            </a>
+
+            <a
+              href="https://www.instagram.com/chitu_6889/reels/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
+
+            <a
+              href="https://line.me/R/ti/p/@106rgyyi?oat_content=url&ts=08170154"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              aria-label="Line"
+            >
+              <MessageCircle className="w-6 h-6" />
+            </a>
+
+            <a
+              href="https://m.twitch.tv/horse6889/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              aria-label="Twitch"
+            >
+              <Twitch className="w-6 h-6" />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@%E9%A6%AC%E4%BE%86%E8%BF%8E%E5%AF%8C%E9%9B%BB%E5%AD%90%E6%88%90%E9%95%B7%E7%B4%80%E9%8C%84"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              aria-label="Youtube"
+            >
+              <Youtube className="w-6 h-6" />
+            </a>
+          </div>
+
+          <div className="text-center mt-6 text-[#EACB79]/60 text-sm">
+            <p>© 2025 馬來迎富. All rights reserved.</p>
+          </div>
+        </footer>
       </div>
     </main>
   );
