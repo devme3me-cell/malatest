@@ -26,11 +26,19 @@ export default function Home() {
   const loadEntries = async () => {
     try {
       const data = await getEntries();
-      setEntries(data);
-      console.log('Loaded entries on main page:', data.length);
+      if (data && data.length > 0) {
+        setEntries(data);
+        console.log('Loaded entries from Supabase:', data.length);
+      } else {
+        // Fallback to localStorage if Supabase is empty or fails
+        const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+        setEntries(localEntries);
+        console.log('Loaded entries from localStorage:', localEntries.length);
+      }
     } catch (error) {
-      console.error('Error loading entries on main page:', error);
-      setEntries([]);
+      console.error('Error loading entries, using localStorage:', error);
+      const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+      setEntries(localEntries);
     }
   };
 
@@ -169,8 +177,20 @@ export default function Home() {
         isStorageUrl: entry.image.startsWith('http')
       });
 
-      await saveEntry(entry);
-      console.log('Entry saved successfully to Supabase');
+      // Try to save to Supabase
+      try {
+        await saveEntry(entry);
+        console.log('Entry saved successfully to Supabase');
+      } catch (supabaseError) {
+        console.error('Supabase save failed, using localStorage fallback:', supabaseError);
+      }
+
+      // Also save to localStorage as backup
+      const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+      localEntries.unshift(entry);
+      localStorage.setItem('lotteryEntries', JSON.stringify(localEntries));
+      console.log('Entry saved to localStorage');
+
       await loadEntries();
     } catch (error) {
       console.error('Failed to save entry:', error);

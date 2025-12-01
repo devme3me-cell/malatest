@@ -46,14 +46,27 @@ export default function AdminDashboard() {
     try {
       setError(null);
       const data = await getEntries();
-      setEntries(data);
-      setIsLoading(false);
-      console.log('Loaded entries:', data.length);
+
+      if (data && data.length > 0) {
+        setEntries(data);
+        setIsLoading(false);
+        console.log('Loaded entries from Supabase:', data.length);
+      } else {
+        // Fallback to localStorage
+        const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+        setEntries(localEntries);
+        setIsLoading(false);
+        if (localEntries.length === 0) {
+          setError('尚無抽獎紀錄。Supabase 未設定，使用本地儲存。');
+        }
+        console.log('Loaded entries from localStorage:', localEntries.length);
+      }
     } catch (error) {
-      console.error('Error loading entries:', error);
-      setError('無法載入資料，請檢查 Supabase 連線設定');
-      setEntries([]);
+      console.error('Error loading entries from Supabase, using localStorage:', error);
+      const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+      setEntries(localEntries);
       setIsLoading(false);
+      setError(localEntries.length === 0 ? '尚無抽獎紀錄。Supabase 未設定，使用本地儲存。' : null);
     }
   };
 
@@ -83,7 +96,18 @@ export default function AdminDashboard() {
   const handleDeleteEntry = async (id: string) => {
     if (confirm('確定要刪除這筆記錄嗎？')) {
       try {
-        await deleteEntryFromDB(id);
+        // Try to delete from Supabase
+        try {
+          await deleteEntryFromDB(id);
+        } catch (supabaseError) {
+          console.log('Supabase delete failed, using localStorage');
+        }
+
+        // Also delete from localStorage
+        const localEntries = JSON.parse(localStorage.getItem('lotteryEntries') || '[]');
+        const updatedEntries = localEntries.filter((entry: Entry) => entry.id !== id);
+        localStorage.setItem('lotteryEntries', JSON.stringify(updatedEntries));
+
         await loadEntries();
       } catch (error) {
         console.error('Error deleting entry:', error);
@@ -95,7 +119,15 @@ export default function AdminDashboard() {
   const handleClearAll = async () => {
     if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
       try {
-        await clearAllEntries();
+        // Try to clear from Supabase
+        try {
+          await clearAllEntries();
+        } catch (supabaseError) {
+          console.log('Supabase clear failed, clearing localStorage only');
+        }
+
+        // Clear localStorage
+        localStorage.setItem('lotteryEntries', '[]');
         setEntries([]);
       } catch (error) {
         console.error('Error clearing entries:', error);
