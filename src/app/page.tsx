@@ -193,7 +193,7 @@ export default function Home() {
 
   const handleShare = async () => {
     try {
-      const prizeText = prizeWon === 0 ? '馬逼簽名' : `${prizeWon}獎金`;
+      const prizeText = prizeWon === 0 ? '馬逼重注單' : `${prizeWon}獎金`;
       const shareText = `我在「馬來迎富每日儲值抽獎」抽中了 ${prizeText}！你也來試試手氣～`;
       const shareUrl = typeof window !== 'undefined' ? window.location.origin : '';
 
@@ -227,21 +227,21 @@ export default function Home() {
       return [
         { name: '58獎金', prob: '80%', color: 'gold', emoji: '💰' },
         { name: '168獎金', prob: '10%', color: 'gold', emoji: '💎' },
-        { name: '✍️ 馬逼簽名', prob: '9%', color: 'gold', emoji: '✍️' },
+        { name: '✍️ 馬逼重注單', prob: '9%', color: 'gold', emoji: '✍️' },
         { name: '388獎金', prob: '1%', color: 'gold', emoji: '🎰' },
       ];
     } else if (selectedAmount === '5000') {
       return [
         { name: '188獎金', prob: '80%', color: 'gold', emoji: '💰' },
         { name: '388獎金', prob: '10%', color: 'gold', emoji: '💎' },
-        { name: '✍️ 馬逼簽名', prob: '9%', color: 'gold', emoji: '✍️' },
+        { name: '✍️ 馬逼重注單', prob: '9%', color: 'gold', emoji: '✍️' },
         { name: '888獎金', prob: '1%', color: 'gold', emoji: '🎰' },
       ];
     } else {
       return [
         { name: '388獎金', prob: '80%', color: 'gold', emoji: '💰' },
         { name: '666獎金', prob: '10%', color: 'gold', emoji: '💎' },
-        { name: '✍️ 馬逼簽名', prob: '9%', color: 'gold', emoji: '✍️' },
+        { name: '✍️ 馬逼重注單', prob: '9%', color: 'gold', emoji: '✍️' },
         { name: '1888獎金', prob: '1%', color: 'gold', emoji: '🎰' },
       ];
     }
@@ -550,7 +550,7 @@ export default function Home() {
                 />
                 <h2 className="text-3xl font-bold text-[#EACB79] mb-4">恭喜中獎！</h2>
                 <div className="text-5xl font-bold text-[#EACB79] mb-2">
-                  {prizeWon === 0 ? '馬逼簽名' : `${prizeWon}獎金`}
+                  {prizeWon === 0 ? '馬逼重注單' : `${prizeWon}獎金`}
                 </div>
                 <p className="text-[#EACB79]/70">隔天統一派彩喔~</p>
               </div>
@@ -598,7 +598,7 @@ export default function Home() {
                       <div key={record.id} className="flex justify-between items-center py-2 border-b border-[#EACB79]/20 last:border-0">
                         <span className="text-[#EACB79]/70 font-semibold">{maskedUsername}</span>
                         <span className="font-bold text-[#EACB79]">
-                          {record.prize === 0 ? '馬逼簽名' : `${record.prize} 獎金`}
+                          {record.prize === 0 ? '馬逼重注單' : `${record.prize} 獎金`}
                         </span>
                         <span className="text-[#EACB79]/50 text-sm">
                           {new Date(record.timestamp).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })}

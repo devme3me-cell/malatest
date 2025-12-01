@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 type Prize =
   | '58獎金'
   | '168獎金'
-  | '✍️ 馬逼簽名'
+  | '✍️ 馬逼重注單'
   | '388獎金'
   | '188獎金'
   | '888獎金'
@@ -45,14 +45,14 @@ export default function SlotMachine({ selectedAmount, onWin }: SlotMachineProps)
       return [
         { name: '58獎金', probability: 0.80, emoji: '💰', color: '#EACB79' },
         { name: '168獎金', probability: 0.10, emoji: '💎', color: '#EACB79' },
-        { name: '✍️ 馬逼簽名', probability: 0.09, emoji: '✍️', color: '#EACB79' },
+        { name: '✍️ 馬逼重注單', probability: 0.09, emoji: '✍️', color: '#EACB79' },
         { name: '388獎金', probability: 0.01, emoji: '🎰', color: '#EACB79' },
       ];
     } else if (selectedAmount === '5000') {
       return [
         { name: '188獎金', probability: 0.80, emoji: '💰', color: '#EACB79' },
         { name: '388獎金', probability: 0.10, emoji: '💎', color: '#EACB79' },
-        { name: '✍️ 馬逼簽名', probability: 0.09, emoji: '✍️', color: '#EACB79' },
+        { name: '✍️ 馬逼重注單', probability: 0.09, emoji: '✍️', color: '#EACB79' },
         { name: '888獎金', probability: 0.01, emoji: '🎰', color: '#EACB79' },
       ];
     } else {
@@ -60,7 +60,7 @@ export default function SlotMachine({ selectedAmount, onWin }: SlotMachineProps)
       return [
         { name: '388獎金', probability: 0.80, emoji: '💰', color: '#EACB79' },
         { name: '666獎金', probability: 0.10, emoji: '💎', color: '#EACB79' },
-        { name: '✍️ 馬逼簽名', probability: 0.09, emoji: '✍️', color: '#EACB79' },
+        { name: '✍️ 馬逼重注單', probability: 0.09, emoji: '✍️', color: '#EACB79' },
         { name: '1888獎金', probability: 0.01, emoji: '🎰', color: '#EACB79' },
       ];
     }
@@ -197,7 +197,7 @@ export default function SlotMachine({ selectedAmount, onWin }: SlotMachineProps)
 
       // Notify parent component of win
       const prizeNumber =
-        finalPrize === '✍️ 馬逼簽名'
+        finalPrize === '✍️ 馬逼重注單'
           ? 0
           : parseInt(finalPrize.replace('獎金', ''), 10);
       if (onWin) {

@@ -280,7 +280,7 @@ export default function AdminDashboard() {
                       <td className="p-4">
                         <span className="px-2 py-1 rounded-lg bg-green-500/20 text-green-400 flex items-center gap-1 w-fit">
                           <Trophy className="w-3 h-3" />
-                          {entry.prize === 0 ? '馬逼簽名' : `${entry.prize}獎金`}
+                          {entry.prize === 0 ? '馬逼重注單' : `${entry.prize}獎金`}
                         </span>
                       </td>
                       <td className="p-4">
